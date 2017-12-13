@@ -49,7 +49,7 @@ function open_gui(entity, player)
 		gui.add({ type = "label", 
 				  name = "title",
 				  caption = "Wagon filters synchronization",
-				  style = "description_title_label_style" })
+				  style = "description_title_label" })
 				  
 		local frame = gui.add({ type = "flow", name = "frame", direction = "horizontal" })
 				  
@@ -131,10 +131,8 @@ function broadcast(player)
 		local entity = ctx.entity
 		local group = get_group(entity)
 		if group ~= "" then
-			player.print("Broadcast on group " .. group)
 			local wagons = get_wagons_by_group(group)
 			for i, wagon in ipairs(wagons) do
-				player.print("copy_settings")
 				if wagon ~= entity then
 					wagon.copy_settings(entity)
 				end
